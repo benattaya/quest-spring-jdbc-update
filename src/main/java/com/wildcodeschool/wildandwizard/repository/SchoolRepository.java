@@ -17,11 +17,12 @@ public class SchoolRepository {
                     DB_URL, DB_USER, DB_PASSWORD
             );
             PreparedStatement statement = connection.prepareStatement(
-                    "UPDATE school SET name=?, capacity=?, country=? WHERE id:?"
+                    "UPDATE school SET name=?, capacity=?, country=? WHERE id = ?"
             );
             statement.setString(1, name);
             statement.setLong(2, capacity);
             statement.setString(3, country);
+            statement.setLong(4,id);
 
             if (statement.executeUpdate() !=1) {
                 throw new SQLException("failed to update data");
